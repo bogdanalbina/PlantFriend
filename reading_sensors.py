@@ -15,6 +15,7 @@ sensorData = {
     'prox':[],
     'touch':[],
     'electric':[],
+    'voltage':[],
     'noise':[]
 }
 data_clear = 1
@@ -43,18 +44,21 @@ def read_arduino():
         prox = float(sensorValues[4])
         touch = int(sensorValues[5])
         elec = int(sensorValues[6])
-        noise = int(sensorValues[7])
+        volt = int(sensorValues[7])
+        noise = int(sensorValues[8])
         sensorData['time'].append(time)
         sensorData['temp'].append(temp)
         sensorData['soil'].append(soil)
         sensorData['prox'].append(prox)
         sensorData['touch'].append(touch)
         sensorData['electric'].append(elec)
+        sensorData['volt'].append(volt)
         sensorData['noise'].append(noise)
         #Print received values:
         #print(f'Time: {sensorValues[1]}, Temp: {sensorValues[2]}, Soil:{sensorValues[3]}, Proximity:{sensorValues[4]} cm, Touch: {int(sensorValues[5])}, Noise:{sensorValues[6]}')
         with open("recordings.txt", "a") as fp:
-            fp.write(f'Time: {int(time/2000)}, Temperature: {temp}, Soil Moisture:{soil}, Proximity:{prox} cm, Touch: {touch}, Electric Signal: {elec}, Noise:{noise}\n')
+            fp.write(f'Time: {int(time/2000)}, Temperature: {temp}, Soil Moisture:{soil}, Proximity:{prox} cm, Touch: {touch},
+                     Electric Signal: {elec}, Voltage:{volt}, Noise:{noise}\n')
     else:
         #in case the circuit is closed but we already cleared the data, we ar ejust waiting
         #print("Waiting to start...")
