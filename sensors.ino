@@ -143,32 +143,38 @@ void loop() {
     
     conductivitySensor=digitalRead(conductivityInputPin);
     Serial.print(sw);
-    Serial.print(", ");
+    Serial.print("; ");
     Serial.print(currentMillis);
-    Serial.print(", ");
+    Serial.print("; ");
     Serial.print(temp);
-    Serial.print(", " );
+    Serial.print("; " );
     //no vibroSensor needed
     //Serial.print(vibroSensorState);
     //Serial.print(", ")
     Serial.print(soilSensorValue);
-    Serial.print(", ");
+    Serial.print("; ");
     Serial.print(minUltra);
-    Serial.print(", ");
+    Serial.print("; ");
     Serial.print(conductivitySensor);
-    Serial.print(", ");
-    Serial.print("[");
+    Serial.print("; ");
+    
     for (int j = 0;j< 20; j++){
-      Serial.print(electricValue[j]);
-      Serial.print(",");
+      if (j<19) {
+        Serial.print(electricValue[j]);
+        Serial.print(",");
+      }
+      else{
+        Serial.print(electricValue[j]);
+      }
+      
     }
-    Serial.print("]");
+    
     //print_array(electricValue);
     
-    Serial.print(", ");
+    Serial.print("; ");
     currentValue = analogRead(currentPin);
     Serial.print(currentValue);
-    Serial.print(", ");
+    Serial.print("; ");
     Serial.println(maxSound);}
     
   
