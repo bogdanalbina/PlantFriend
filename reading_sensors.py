@@ -70,5 +70,10 @@ def clear_file():
 #try this for continuous data
 print ("Running",end='')
 while (True):
-    print(".",end='')
-    read_arduino()
+    for i in range(10):
+        try:
+            print(".",end='')
+            read_arduino()
+        except ValueError:
+            print("e",end='')
+            continue
