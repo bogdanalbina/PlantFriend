@@ -66,6 +66,7 @@ void loop() {
   //delay(2000);
   
   unsigned long currentMillis = millis();
+  
   if(currentMillis - previousMillisFast > fastInterval) {
 	  // The Arduino executes this code once every fastInterval ms
     
@@ -90,6 +91,7 @@ void loop() {
     }
 
     EMGsensorValue = analogRead(EMGsensorPin);
+    //Serial.println(EMGsensorValue);
     
     if(i<20){
       electricValue[i] = EMGsensorValue;
@@ -176,7 +178,6 @@ void loop() {
     Serial.print(currentValue);
     Serial.print("; ");
     Serial.println(maxSound);}
-    
   
     maxSound = 0;
     minUltra = 1000;
